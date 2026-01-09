@@ -46,7 +46,7 @@ const About = () => {
   const visionRef = useRef(null);
   const differenceRef = useRef(null);
   const philosophyRef = useRef(null);
-  
+
   const isHeroInView = useInView(heroRef, { once: true });
   const isVisionInView = useInView(visionRef, { once: true, margin: "-100px" });
   const isDifferenceInView = useInView(differenceRef, { once: true, margin: "-100px" });
@@ -55,88 +55,80 @@ const About = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section ref={heroRef} className="pt-32 pb-20 lg:pt-40 lg:pb-32 relative overflow-hidden">
+      <section ref={heroRef} className="pt-32 pb-24 lg:pt-48 lg:pb-40 relative overflow-hidden bg-background">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 1 }}
             >
-              <span className="text-primary font-medium tracking-widest text-sm uppercase mb-4 block">
-                About Guddan
+              <span className="text-primary font-medium tracking-[0.2em] text-xs uppercase mb-8 block pl-1 border-l-2 border-primary/40">
+                Our Story
               </span>
-              <h1 className="font-serif text-4xl md:text-5xl font-semibold text-foreground leading-tight mb-6">
-                Celebrating India's Rich Heritage of Handcrafted Excellence
+              <h1 className="font-serif text-5xl md:text-6xl font-medium text-foreground leading-[1.15] mb-8">
+                Celebrating India's Rich Heritage of <span className="italic">Handcrafted Excellence</span>
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Guddan is a bridge between Indian artisans and global corporate buyers, 
-                focused on authentic craftsmanship, cultural heritage, and premium gifting. 
-                We are not a marketplace—we are curators of meaningful, culturally significant gifts.
+              <p className="text-xl text-muted-foreground leading-relaxed font-light">
+                Guddan is more than a brand; it is a bridge. We connect the quiet dedication of Indian artisans with the global appreciation of corporate buyers. We are not a marketplace—we are custodians of culture and curators of meaning.
               </p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 1, delay: 0.2 }}
               className="relative"
             >
-              <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-elevated">
+              <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={heroImage}
                   alt="Artisan at work"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover grayscale-[0.1] hover:grayscale-0 transition-all duration-1000"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 border-2 border-primary rounded-lg -z-10" />
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Vision Section */}
-      <section ref={visionRef} className="py-20 lg:py-32 bg-secondary">
+      <section ref={visionRef} className="py-32 lg:py-48 bg-secondary/30 relative">
         <div className="container mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={isVisionInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto mb-24"
           >
-            <span className="text-primary font-medium tracking-widest text-sm uppercase mb-4 block">
+            <span className="text-primary font-medium tracking-[0.2em] text-xs uppercase mb-6 block">
               Our Vision
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6">
-              A Bridge Between Artisans & Markets
+            <h2 className="font-serif text-4xl md:text-5xl font-medium text-foreground mb-8 leading-tight">
+              Honoring Tradition in a Modern World
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              We envision a world where India's rich tradition of handcrafted goods receives 
-              global recognition, where talented craftsmen from remote corners find audiences 
-              who appreciate their art, and where corporate gifting becomes a celebration of 
-              heritage and artistry.
+            <p className="text-muted-foreground text-xl leading-relaxed font-light">
+              We envision a future where corporate gifting transcends transaction and becomes a celebration of heritage. Where every gift tells a story of a craftsman's hands, a village's history, and a legacy preserved.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-border pt-16">
             {[
-              { icon: Globe, title: "Bridging Artisans & Markets", text: "Connecting talented craftsmen from remote corners of India with global audiences." },
-              { icon: Heart, title: "Preserving Heritage", text: "Honoring and showcasing India's rich tradition of handcrafted goods." },
-              { icon: Sparkles, title: "Creating Opportunities", text: "Opening doors to wider markets for gifted artisans." },
+              { icon: Globe, title: "Global Reach", text: "Connecting remote craft clusters to international appreciation." },
+              { icon: Heart, title: "Cultural Stewardship", text: "Safeguarding techniques passed down through generations." },
+              { icon: Sparkles, title: "Economic Empowerment", text: "Creating sustainable livelihoods for artisan communities." },
             ].map((item, index) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isVisionInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                className="bg-background rounded-lg p-8 shadow-card text-center"
+                transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
+                className="text-left group"
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                  <item.icon size={28} className="text-primary" />
-                </div>
-                <h3 className="font-serif text-xl font-semibold text-foreground mb-3">
+                <item.icon size={32} className="text-primary mb-6 stroke-1" />
+                <h3 className="font-serif text-2xl font-medium text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-lg font-light leading-relaxed">
                   {item.text}
                 </p>
               </motion.div>
@@ -146,30 +138,31 @@ const About = () => {
       </section>
 
       {/* The Guddan Difference */}
-      <section ref={differenceRef} className="py-20 lg:py-32">
+      <section ref={differenceRef} className="py-32 lg:py-48 bg-background">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isDifferenceInView ? { opacity: 1, x: 0 } : {}}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isDifferenceInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
               className="relative order-2 lg:order-1"
             >
-              <div className="aspect-[3/4] rounded-lg overflow-hidden shadow-elevated">
+              <div className="aspect-[3/4] overflow-hidden bg-secondary">
                 <img
                   src={warliImage}
                   alt="Warli Art"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover mix-blend-multiply opacity-90"
                 />
               </div>
+              <div className="absolute -bottom-10 -right-10 w-2/3 h-2/3 border border-primary/20 -z-10" />
             </motion.div>
 
-            <div className="order-1 lg:order-2">
+            <div className="order-1 lg:order-2 self-center">
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={isDifferenceInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6 }}
-                className="text-primary font-medium tracking-widest text-sm uppercase mb-4 block"
+                className="text-primary font-medium tracking-[0.2em] text-xs uppercase mb-6 block"
               >
                 The Guddan Difference
               </motion.span>
@@ -177,28 +170,28 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isDifferenceInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-8"
+                className="font-serif text-4xl md:text-5xl font-medium text-foreground mb-12"
               >
-                What Sets Us Apart
+                Curated with Conscience
               </motion.h2>
 
-              <div className="space-y-6">
+              <div className="space-y-12">
                 {guddanDifference.map((item, index) => (
                   <motion.div
                     key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isDifferenceInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                    className="flex gap-4"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={isDifferenceInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                    className="flex gap-6"
                   >
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <item.icon size={20} className="text-primary" />
+                    <div className="flex-shrink-0 mt-1">
+                      <item.icon size={24} className="text-primary stroke-1" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-lg font-semibold text-foreground mb-1">
+                      <h3 className="font-serif text-xl font-medium text-foreground mb-2">
                         {item.title}
                       </h3>
-                      <p className="text-muted-foreground">
+                      <p className="text-muted-foreground font-light text-lg">
                         {item.description}
                       </p>
                     </div>
@@ -211,20 +204,21 @@ const About = () => {
       </section>
 
       {/* Corporate Gifting Philosophy */}
-      <section ref={philosophyRef} className="py-20 lg:py-32 bg-secondary">
-        <div className="container mx-auto px-6">
+      <section ref={philosophyRef} className="py-32 lg:py-40 bg-foreground text-background relative">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 mix-blend-overlay" />
+        <div className="container mx-auto px-6 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={isPhilosophyInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-2xl mx-auto mb-16"
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-3xl mx-auto mb-20"
           >
-            <span className="text-primary font-medium tracking-widest text-sm uppercase mb-4 block">
-              Our Philosophy
-            </span>
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground">
-              Corporate Gifting, Reimagined
+            <h2 className="font-serif text-4xl md:text-5xl font-medium mb-6">
+              Corporate Gifting, <span className="text-primary italic">Reimagined</span>
             </h2>
+            <p className="text-background/70 text-xl font-light leading-relaxed">
+              We believe a gift is more than an object. It is a gesture of respect, a symbol of partnership, and a reflection of your brand's values.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -233,16 +227,16 @@ const About = () => {
                 key={item.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isPhilosophyInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-background rounded-lg p-8 shadow-card"
+                transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                className="bg-white/5 backdrop-blur-sm border border-white/10 p-10 hover:bg-white/10 transition-colors duration-500"
               >
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                  <item.icon size={24} className="text-primary" />
+                <div className="mb-6 text-primary">
+                  <item.icon size={32} className="stroke-1" />
                 </div>
-                <h3 className="font-serif text-xl font-semibold text-foreground mb-3">
+                <h3 className="font-serif text-2xl font-medium mb-4 text-white">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-white/60 font-light leading-relaxed">
                   {item.description}
                 </p>
               </motion.div>

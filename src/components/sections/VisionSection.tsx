@@ -29,38 +29,43 @@ const VisionSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-secondary">
-      <div className="container mx-auto px-6">
+    <section ref={ref} className="py-32 lg:py-40 bg-background relative overflow-hidden">
+      {/* Subtle Background Pattern */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-20"
         >
-          <span className="text-primary font-medium tracking-widest text-sm uppercase mb-4 block">
+          <span className="text-primary font-medium tracking-[0.2em] text-xs uppercase mb-6 block">
             Our Vision
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground">
+          <h2 className="font-serif text-4xl md:text-5xl font-medium text-foreground leading-tight">
             A Multi-Disciplinary Platform for Indian Craft
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {visionPillars.map((pillar, index) => (
             <motion.div
               key={pillar.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="bg-background rounded-lg p-8 shadow-card hover:shadow-elevated transition-shadow duration-300"
+              className="text-center group"
             >
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                <pillar.icon size={24} className="text-primary" />
+              <div className="w-16 h-16 mx-auto rounded-full bg-secondary flex items-center justify-center mb-8 group-hover:bg-primary/10 transition-colors duration-500">
+                <pillar.icon size={28} className="text-primary/80 group-hover:text-primary transition-colors duration-500" />
               </div>
-              <h3 className="font-serif text-xl font-semibold text-foreground mb-3">
+              <h3 className="font-serif text-2xl font-medium text-foreground mb-4">
                 {pillar.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed text-lg font-light">
                 {pillar.description}
               </p>
             </motion.div>

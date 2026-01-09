@@ -53,7 +53,7 @@ const Clients = () => {
   const heroRef = useRef(null);
   const sectorsRef = useRef(null);
   const whyRef = useRef(null);
-  
+
   const isHeroInView = useInView(heroRef, { once: true });
   const isSectorsInView = useInView(sectorsRef, { once: true, margin: "-100px" });
   const isWhyInView = useInView(whyRef, { once: true, margin: "-100px" });
@@ -61,7 +61,7 @@ const Clients = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section ref={heroRef} className="pt-32 pb-16 lg:pt-40 lg:pb-24">
+      <section ref={heroRef} className="pt-32 pb-24 lg:pt-48 lg:pb-32 bg-secondary/30">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -69,49 +69,47 @@ const Clients = () => {
             transition={{ duration: 0.8 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <span className="text-primary font-medium tracking-widest text-sm uppercase mb-4 block">
-              Our Clients
+            <span className="text-primary font-medium tracking-[0.2em] text-xs uppercase mb-6 block">
+              Our Clientele
             </span>
-            <h1 className="font-serif text-4xl md:text-5xl font-semibold text-foreground leading-tight mb-6">
-              Trusted by Industry Leaders
+            <h1 className="font-serif text-5xl md:text-6xl font-medium text-foreground leading-[1.1] mb-8">
+              Trusted by <span className="italic">Industry Leaders</span>
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              From Fortune 500 companies to creative agencies, leading organizations trust 
-              Guddan for their premium corporate gifting needs.
+            <p className="text-xl text-muted-foreground leading-relaxed font-light">
+              We have had the privilege/opportunity to partner with forward-thinking organizations
+              that value heritage, quality, and meaningful relationships.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Client Sectors */}
-      <section ref={sectorsRef} className="pb-24">
+      <section ref={sectorsRef} className="py-24 bg-background">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {clientSectors.map((sector, index) => (
               <motion.div
                 key={sector.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isSectorsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                className="bg-card rounded-lg p-8 shadow-card hover:shadow-elevated transition-shadow duration-300"
+                transition={{ duration: 0.8, delay: index * 0.15 }}
+                className="group border-t border-border pt-12"
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                  <sector.icon size={28} className="text-primary" />
-                </div>
-                <h3 className="font-serif text-2xl font-semibold text-foreground mb-3">
+                <sector.icon size={36} className="text-primary mb-6 stroke-1" />
+                <h3 className="font-serif text-2xl font-medium text-foreground mb-4">
                   {sector.title}
                 </h3>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground font-light mb-8 leading-relaxed">
                   {sector.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="space-y-3">
                   {sector.companies.map((company) => (
-                    <span
-                      key={company}
-                      className="px-3 py-1 bg-secondary rounded-full text-xs font-medium text-muted-foreground"
-                    >
-                      {company}
-                    </span>
+                    <div key={company} className="flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary/40" />
+                      <span className="text-foreground/80 font-medium tracking-wide">
+                        {company}
+                      </span>
+                    </div>
                   ))}
                 </div>
               </motion.div>
@@ -121,38 +119,38 @@ const Clients = () => {
       </section>
 
       {/* Why Choose Section */}
-      <section ref={whyRef} className="py-24 bg-secondary">
+      <section ref={whyRef} className="py-32 bg-foreground text-background">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isWhyInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-2xl mx-auto mb-16"
+            className="text-center max-w-2xl mx-auto mb-20"
           >
-            <span className="text-primary font-medium tracking-widest text-sm uppercase mb-4 block">
-              Why Choose Guddan
+            <span className="text-primary font-medium tracking-[0.2em] text-xs uppercase mb-6 block">
+              The Guddan Promise
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground">
-              What Makes Us Different
+            <h2 className="font-serif text-4xl md:text-5xl font-medium mb-6">
+              Excellence in Every Detail
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {whyChoose.map((item, index) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isWhyInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-background rounded-lg p-6 shadow-card text-center"
+                className="text-center group"
               >
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <item.icon size={24} className="text-primary" />
+                <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center mx-auto mb-6 group-hover:border-primary/50 transition-colors duration-500">
+                  <item.icon size={28} className="text-primary" />
                 </div>
-                <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
+                <h3 className="font-serif text-xl font-medium text-white mb-3">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-white/60 text-sm font-light leading-relaxed">
                   {item.description}
                 </p>
               </motion.div>
@@ -163,11 +161,11 @@ const Clients = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isWhyInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-center mt-12"
+            className="text-center mt-20"
           >
             <Link to="/contact">
-              <Button variant="hero" size="lg">
-                Become a Client
+              <Button variant="hero" size="xl">
+                Start a Conversation
                 <ArrowRight size={18} />
               </Button>
             </Link>
